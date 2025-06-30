@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Display Types Demo</title>
+  <style>
+    .box {
+      padding: 10px;
+      margin: 5px;
+      color: white;
+    }
+    .block-box {
+      background-color: teal;
+      display: block;
+    }
+    .inline-box {
+      background-color: orange;
+      display: inline;
+    }
+    .inline-block-box {
+      background-color: purple;
+      display: inline-block;
+      width: 100px;
+    }
+    .flex-container {
+      display: flex;
+      background-color: #333;
+    }
+    .flex-box {
+      background-color: crimson;
+      flex: 1;
+      text-align: center;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      background-color: #555;
+    }
+    .grid-box {
+      background-color: forestgreen;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Block</h2>
+  <div class="block-box box">Block 1</div>
+  <div class="block-box box">Block 2</div>
+
+  <h2>Inline</h2>
+  <span class="inline-box box">Inline 1</span>
+  <span class="inline-box box">Inline 2</span>
+
+  <h2>Inline-Block</h2>
+  <span class="inline-block-box box">IB 1</span>
+  <span class="inline-block-box box">IB 2</span>
+
+  <h2>Flex</h2>
+  <div class="flex-container">
+    <div class="flex-box box">Flex 1</div>
+    <div class="flex-box box">Flex 2</div>
+    <div class="flex-box box">Flex 3</div>
+    <div class="flex-box box">Flex 4</div>
+    <div class="flex-box box">Flex 5</div>
+    <div class="flex-box box">Flex 6</div>
+  </div>
+
+  <h2>Grid</h2>
+  <div class="grid-container">
+    <div class="grid-box box">Grid 1</div>
+    <div class="grid-box box">Grid 2</div>
+    <div class="grid-box box">Grid 3</div>
+    <div class="grid-box box">Grid 4</div>
+    <div class="grid-box box">Grid 5</div>
+    <div class="grid-box box">Grid 6</div>
+  </div>
+
+</body>
+</html>
