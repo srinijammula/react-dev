@@ -1,4 +1,4 @@
-export const restaurants= [
+const restaurants= [
 {
 info: {
 id: "118745",
@@ -1613,3 +1613,5 @@ type: "WEBLINK"
 }
 }
 ]
+
+export default restaurants;
