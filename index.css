@@ -49,7 +49,7 @@
     padding: 10px;
 }
 
-.filter-btn{
+.filter-btn,.filter-all-btn{
     margin:10px;
     cursor: pointer;
 }
