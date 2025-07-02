@@ -1,11 +1,10 @@
 import { RestaurantCard } from "./RestaurantCard"
-import restaurants from "../utils/data"
 import {useState, useEffect} from "react";
 import { corsProxy, swiggyApi } from "../utils/constants"
 import {Shimmer} from "./shimmer"
 
 export const Body = () => {
-    const [restaurantList, setRestaurantList] = useState(restaurants);
+    const [restaurantList, setRestaurantList] = useState([]);
 
     const fetchData= async () => {
         const data = await fetch(corsProxy+swiggyApi)
@@ -18,8 +17,8 @@ export const Body = () => {
     },[]);
     
 
-    if (restaurantList==0){
-    <Shimmer />
+    if (restaurantList.length==0){
+    return <Shimmer />
     }
 
     return (

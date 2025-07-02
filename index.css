@@ -55,12 +55,13 @@
 }
 
 .shimmer-card{
-    width: 200px;
-    height: 400px;
-    background-color: black;
+    margin:10px;
+    width:300px;
+    height: 250px;
     box-shadow: 0 4px 8px gray;
 }
 
 .shimmer-container{
     display: flex;
+    flex-wrap:wrap;
 }
