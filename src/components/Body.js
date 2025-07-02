@@ -2,6 +2,7 @@ import { RestaurantCard } from "./RestaurantCard"
 import restaurants from "../utils/data"
 import {useState, useEffect} from "react";
 import { corsProxy, swiggyApi } from "../utils/constants"
+import {Shimmer} from "./shimmer"
 
 export const Body = () => {
     const [restaurantList, setRestaurantList] = useState(restaurants);
@@ -9,12 +10,17 @@ export const Body = () => {
     const fetchData= async () => {
         const data = await fetch(corsProxy+swiggyApi)
         const json=await data.json();
-        setRestaurantList(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
+        setRestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
 
      useEffect(() => {
         fetchData();
     },[]);
+    
+
+    if (restaurantList==0){
+    <Shimmer />
+    }
 
     return (
         <div className="body">
