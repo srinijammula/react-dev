@@ -1,9 +1,21 @@
 import { RestaurantCard } from "./RestaurantCard"
 import restaurants from "../utils/data"
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import { corsProxy, swiggyApi } from "../utils/constants"
 
 export const Body = () => {
     const [restaurantList, setRestaurantList] = useState(restaurants);
+
+    const fetchData= async () => {
+        const data = await fetch(corsProxy+swiggyApi)
+        const json=await data.json();
+        setRestaurantList(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
+    }
+
+     useEffect(() => {
+        fetchData();
+    },[]);
+
     return (
         <div className="body">
             <div className="filter">
