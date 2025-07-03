@@ -1,5 +1,8 @@
+import { useState } from "react"
+
 const logo = new URL('../img/eato_logo.png',import.meta.url).href
 export const Header = () => {
+    const [btnName,setBtnName]=useState('Login')
     return (
         <div className="header">
             <div>
@@ -11,6 +14,7 @@ export const Header = () => {
                     <li>About</li>
                     <li>Contact</li>
                     <li>Cart</li>
+                    <button className="login" onClick={() => {setBtnName(btnName=='Login'?'Logout':'Login')}}>{btnName}</button>
                 </ul>
             </div>
         </div>

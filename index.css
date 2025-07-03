@@ -46,12 +46,35 @@
 }
 
 .filter{
+    display: flex;
     padding: 10px;
 }
 
 .filter-btn,.filter-all-btn{
     margin:10px;
     cursor: pointer;
+}
+
+.search{
+    margin: 10px;
+}
+
+.search input{
+    padding: 10px;
+}
+
+.search-btn,.filter-btn,.filter-all-btn{
+    margin:10px;
+    padding: 10px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.5);
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+
+.search-btn:hover,.filter-btn:hover,.filter-all-btn:hover{
+    background-color: darkorange;
 }
 
 .shimmer-card{
@@ -64,4 +87,9 @@
 .shimmer-container{
     display: flex;
     flex-wrap:wrap;
+}
+
+.login{
+    padding:10px;
+    cursor: pointer;
 }
