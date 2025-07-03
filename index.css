@@ -91,5 +91,14 @@
 
 .login{
     padding:10px;
+    margin: 10px;
     cursor: pointer;
+    color: white;
+    background-color: orange;
+    border:2px solid darkorange;
+    font-size: 1.5rem;
+}
+
+.login:hover{
+    background-color: darkorange;
 }
