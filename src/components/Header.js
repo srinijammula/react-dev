@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const logo = new URL('../img/eato_logo.png',import.meta.url).href
 export const Header = () => {
@@ -10,9 +11,9 @@ export const Header = () => {
             </div>
             <div className="nav-items">
                 <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                    <Link to="/"><li>Home</li></Link>
+                    <Link to="/about"><li>About</li></Link>
+                    <Link to="/contact"><li>Contact</li></Link>
                     <li>Cart</li>
                     <button className="login" onClick={() => {setBtnName(btnName=='Login'?'Logout':'Login')}}>{btnName}</button>
                 </ul>
