@@ -2,7 +2,8 @@ import { RestaurantCard } from "./RestaurantCard"
 // import restaurants from '../utils/data'
 import {useState, useEffect} from "react";
 import { corsProxy, swiggyApi } from "../utils/constants"
-import {Shimmer} from "./shimmer"
+import {Shimmer} from "./Shimmer"
+import { Link } from "react-router-dom";
 
 export const Body = () => {
     const [restaurantList, setRestaurantList] = useState([]);
@@ -56,7 +57,8 @@ export const Body = () => {
             </div>
             <div className="res-container">
                 {
-                    filteredList.map(restaurant=> <RestaurantCard key={restaurant.info.id} resData={restaurant}/>)
+                    filteredList.map(restaurant=> 
+                    <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>)
                 }
             </div>
         </div>
