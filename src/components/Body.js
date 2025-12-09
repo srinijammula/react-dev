@@ -13,8 +13,8 @@ export const Body = () => {
     const fetchData= async () => {
         const data = await fetch(corsProxy+swiggyApi)
         const json=await data.json();
-        setRestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-        setFilteredList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setRestaurantList(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setFilteredList(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
 
      useEffect(() => {
