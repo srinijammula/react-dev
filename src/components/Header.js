@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useOnlineStatus } from "../utils/useOnlineStatus"
 
 const logo = new URL('../img/eato_logo.png',import.meta.url).href
 export const Header = () => {
     const [btnName,setBtnName]=useState('Login')
+    const onlineStatus = useOnlineStatus();
     return (
         <div className="header">
             <div>
@@ -11,6 +13,7 @@ export const Header = () => {
             </div>
             <div className="nav-items">
                 <ul>
+                    <li>Online Status: {onlineStatus? "🟢":"🔴"} </li>
                     <Link to="/"><li>Home</li></Link>
                     <Link to="/about"><li>About</li></Link>
                     <Link to="/contact"><li>Contact</li></Link>

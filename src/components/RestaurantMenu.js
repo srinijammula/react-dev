@@ -1,23 +1,13 @@
-import { useEffect, useState } from "react"
-import { swiggyMenu, corsProxy } from "../utils/constants"
 import { Shimmer } from "./Shimmer"
 import { useParams } from "react-router"
 import { MenuCard } from "./MenuCard"
+import { useRestaurantMenu } from "../utils/useRestaurantMenu"
 
 export const RestaurantMenu = () =>{
 
     const {resId} = useParams()
 
-    const [resInfo, setResInfo] = useState(null)
-
-    const fetchMenu= async () => {
-        const data = await fetch(corsProxy+swiggyMenu+resId)
-        const json= await data.json()
-        setResInfo(json.data)
-    }
-     useEffect(() => {
-    fetchMenu()
-    },[])
+    const resInfo=useRestaurantMenu(resId);
 
     if (resInfo===null){
         return <Shimmer />

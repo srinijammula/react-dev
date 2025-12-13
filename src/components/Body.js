@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 import { corsProxy, swiggyApi } from "../utils/constants"
 import {Shimmer} from "./Shimmer"
 import { Link } from "react-router-dom";
+import { useOnlineStatus } from "../utils/useOnlineStatus";
 
 export const Body = () => {
     const [restaurantList, setRestaurantList] = useState([]);
@@ -20,7 +21,12 @@ export const Body = () => {
      useEffect(() => {
         fetchData();
     },[]);
-    
+
+    const onlineStatus = useOnlineStatus();
+    if (onlineStatus === false){
+        return <h1> You're offline</h1>
+    }
+
 
     if (restaurantList.length==0){
     return <Shimmer />
