@@ -1,4 +1,4 @@
-import { RestaurantCard } from "./RestaurantCard"
+import { RestaurantCard, PromotedRestaurantCard } from "./RestaurantCard"
 // import restaurants from '../utils/data'
 import {useState, useEffect} from "react";
 import { corsProxy, swiggyApi } from "../utils/constants"
@@ -11,6 +11,7 @@ export const Body = () => {
     const [filteredList, setFilteredList] = useState([]);
     const [searchText, setSearchText] =useState("");
 
+    const PromotedCard=PromotedRestaurantCard(RestaurantCard);
     const fetchData= async () => {
         const data = await fetch(corsProxy+swiggyApi)
         const json=await data.json();
@@ -68,7 +69,13 @@ export const Body = () => {
             <div className="flex flex-wrap">
                 {
                     filteredList.map(restaurant=> 
-                    <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>)
+                    <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}>
+                        {restaurant.info.veg? (
+                            <PromotedCard resData={restaurant} />
+                        ):(
+                            <RestaurantCard resData={restaurant}/>
+                        )}
+                    </Link>)
                 }
             </div>
         </div>
