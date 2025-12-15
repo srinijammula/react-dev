@@ -14,13 +14,11 @@ export const RestaurantMenu = () =>{
     }
 
     const {itemCards} = resInfo?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-    console.log(itemCards)
 
     return (
-        <div className="menu">
-            <h1>{resInfo.cards[2].card.card.info.name}</h1>
-            <h2>Menu</h2>
-            <div className="menu-container">
+        <div className="text-lg">
+            <h1 className="inline-block text-lg p-4 m-4 bg-sky-200 rounded-sm">{resInfo.cards[2].card.card.info.name+" Menu"}</h1>
+            <div className="flex flex-wrap p-3 m-3">
                 {itemCards.map(item => <MenuCard key={item.card.info.id} menuData={item.card.info} />)}
             </div>
         </div>

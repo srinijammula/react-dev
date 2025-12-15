@@ -34,10 +34,10 @@ export const Body = () => {
 
     return (
         <div className="body">
-            <div className="filter">
-                <div className="search">
-                    <input type="text" className="search-box" value={searchText} onChange={(e) => {setSearchText(e.target.value) }}/>
-                    <button className="search-btn" onClick={() => {
+            <div className="flex">
+                <div className="m-3 p-3">
+                    <input type="text" className="border rounded-sm py-2" value={searchText} onChange={(e) => {setSearchText(e.target.value) }}/>
+                    <button className="m-3 p-3 rounded-md bg-amber-400" onClick={() => {
                         const filteredList = restaurantList.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()))
                         if(filteredList.length==0){
                             setFilteredList(restaurantList)
@@ -48,20 +48,24 @@ export const Body = () => {
                      } >
                         Search</button>
                 </div>
-                <button className="filter-btn" onClick={() => {
+                <div className="flex items-center">
+                <button className="m-3 p-3 rounded-md bg-pink-300" onClick={() => {
                     const newRestaurantList = restaurantList.filter(
                         (res) => res.info.avgRating>4.3
                     )
                     setFilteredList(newRestaurantList)
                 }}
                 >Top Rated Restaurants</button>
-                <button className="filter-all-btn" onClick={() => {
+                </div>
+                <div className="flex items-center">
+                <button className="m-3 p-3 rounded-md bg-green-300" onClick={() => {
                     setFilteredList(restaurantList)
                 }}
                 >Show all Restaurants</button>
+                </div>
                 
             </div>
-            <div className="res-container">
+            <div className="flex flex-wrap">
                 {
                     filteredList.map(restaurant=> 
                     <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>)
