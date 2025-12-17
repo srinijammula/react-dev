@@ -1,10 +1,11 @@
 import { RestaurantCard, PromotedRestaurantCard } from "./RestaurantCard"
 // import restaurants from '../utils/data'
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import { corsProxy, swiggyApi } from "../utils/constants"
 import {Shimmer} from "./Shimmer"
 import { Link } from "react-router-dom";
 import { useOnlineStatus } from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 export const Body = () => {
     const [restaurantList, setRestaurantList] = useState([]);
@@ -28,6 +29,7 @@ export const Body = () => {
         return <h1> You're offline</h1>
     }
 
+    const {loggedInUser,setUserName} = useContext(UserContext);
 
     if (restaurantList.length==0){
     return <Shimmer />
@@ -50,21 +52,24 @@ export const Body = () => {
                         Search</button>
                 </div>
                 <div className="flex items-center">
-                <button className="m-3 p-3 rounded-md bg-pink-300" onClick={() => {
-                    const newRestaurantList = restaurantList.filter(
-                        (res) => res.info.avgRating>4.3
-                    )
-                    setFilteredList(newRestaurantList)
-                }}
-                >Top Rated Restaurants</button>
+                    <button className="m-3 p-3 rounded-md bg-pink-300" onClick={() => {
+                        const newRestaurantList = restaurantList.filter(
+                            (res) => res.info.avgRating>4.3
+                        )
+                        setFilteredList(newRestaurantList)
+                    }}
+                    >Top Rated Restaurants</button>
                 </div>
                 <div className="flex items-center">
-                <button className="m-3 p-3 rounded-md bg-green-300" onClick={() => {
-                    setFilteredList(restaurantList)
-                }}
-                >Show all Restaurants</button>
+                    <button className="m-3 p-3 rounded-md bg-green-300" onClick={() => {
+                        setFilteredList(restaurantList)
+                    }}
+                    >Show all Restaurants</button>
                 </div>
-                
+                <div className="flex items-center">
+                    <label>User Name:</label>
+                    <input value={loggedInUser} onChange={(e)=>setUserName(e.target.value)} className="border border-black p-3" />
+                </div>
             </div>
             <div className="flex flex-wrap">
                 {
