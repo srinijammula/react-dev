@@ -2,13 +2,15 @@ import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { useOnlineStatus } from "../utils/useOnlineStatus"
 import UserContext from "../utils/UserContext"
+import { useSelector } from "react-redux"
 
 const logo = new URL('../img/eato_logo.png',import.meta.url).href
 export const Header = () => {
     const [btnName,setBtnName]=useState('Login')
     const onlineStatus = useOnlineStatus();
     const data=useContext(UserContext);
-    console.log(data);
+    const cartItems=useSelector((store)=>store.cart.items);
+
     return (
         <div className="flex justify-between shadow-md sm:bg-amber-200 bg-green-200">
             <div>
@@ -21,7 +23,7 @@ export const Header = () => {
                     <Link to="/about"><li className="px-3 font-bold text-2xl">About</li></Link>
                     <Link to="/contact"><li className="px-3 font-bold text-2xl">Contact</li></Link>
                     <Link to="/grocery"><li className="px-3 font-bold text-2xl">Grocery</li></Link>
-                    <li className="px-3 font-bold text-2xl">Cart</li>
+                    <Link to="/cart"><li className="px-3 font-bold text-2xl">Cart ({cartItems.length})</li></Link>
                     <button className="font-bold text-2xl p-3 rounded-md bg-gray-300 hover:bg-gray-400" onClick={() => {setBtnName(btnName=='Login'?'Logout':'Login')}}>{btnName}</button>
                     <li>{data.loggedInUser}</li>
                 </ul>
