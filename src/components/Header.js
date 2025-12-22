@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { useOnlineStatus } from "../utils/useOnlineStatus"
 import UserContext from "../utils/UserContext"
 import { useSelector } from "react-redux"
+//import logo from "../img/eato_logo.png";
 
 const logo = new URL('../img/eato_logo.png',import.meta.url).href
 export const Header = () => {
@@ -10,6 +11,8 @@ export const Header = () => {
     const onlineStatus = useOnlineStatus();
     const data=useContext(UserContext);
     const cartItems=useSelector((store)=>store.cart.items);
+    console.log("logo path:", logo);
+
 
     return (
         <div className="flex justify-between shadow-md sm:bg-amber-200 bg-green-200">
